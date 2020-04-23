@@ -22,13 +22,13 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class UdfEmojisCountTests {
+public class UdfEmojisToHtmlCodepointsTests {
 
   @DisplayName("applying UDF...")
-  @ParameterizedTest(name = "emojis_count({0},{1}) = {2}")
-  @MethodSource("com.github.hpgrahsl.ksqldb.functions.util.JsonFileArgumentsProviders#emojisCountSamples")
-  void applyUdfEmojisCount(String text, boolean unique, Integer result) {
-    assertEquals(result,new UdfEmojisCount().countEmojis(text,unique),"mismatch for counted emojis");
+  @ParameterizedTest(name = "emojis_to_htmlcodepoints({0},{1},{2}) = {3}")
+  @MethodSource("com.github.hpgrahsl.ksqldb.functions.util.JsonFileArgumentsProviders#emojisToHtmlCodepointsSamples")
+  void applyUdfEmojisToHtmlCodepoints(String text, String fpAction, String encoding, String result) {
+    assertEquals(result,new UdfEmojisToHtmlCodepoints().replaceEmojisWithCodepoints(text,fpAction,encoding), "unexpected string mismatch after replacing emojis with html codepoints");
   }
 
 }

@@ -23,33 +23,34 @@ import io.confluent.ksql.function.udf.UdfParameter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.HashSet;
-
 @UdfDescription(
-        name = "emojis_count",
-        description = "leverages the emoji-java library to count emojis within strings",
+        name = "emojis_to_aliases",
+        description = "leverages the emoji-java library to replace emojis contained in a string by their textual aliases",
         author = "Hans-Peter Grahsl (follow @hpgrahsl)",
         version = "1.0.0"
 )
-public class UdfEmojisCount {
+public class UdfEmojisToAliases {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(UdfEmojisCount.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(UdfEmojisToAliases.class);
 
-    @Udf(description = "counts the number of potentially contained emojis with or without duplicates from the given string")
-    public Integer countEmojis(
-            @UdfParameter(value = "text", description = "the given text in which to count emojis")
+    @Udf(description = "replace emojis contained in a string by their textual aliases")
+    public String replaceEmojisWithAliases(
+            @UdfParameter(value = "text", description = "the given text in which to replace any(!) emojis by their textual aliases")
             final String text,
-            @UdfParameter(value = "unique", description = "if true will return count of unique emojis, if false counts all emojis i.e. also duplicates")
-            final boolean unique) {
+            @UdfParameter(value = "fpAction",description = "how to deal with Fitzpatrick modifiers, must be either PARSE, REMOVE or IGNORE")
+            final String fpAction) {
 
-        if(text == null) {
-            LOGGER.warn("the UDF parameter ('text') was null which is probably not intended");
+        if(text == null || fpAction == null) {
+            LOGGER.warn("any of the UDF parameters ('text','fpAction') was null which is probably not intended");
             return null;
         }
 
-        return !unique
-                ? EmojiParser.extractEmojis(text).size()
-                : new HashSet<>(EmojiParser.extractEmojis(text)).size();
+        try {
+            return EmojiParser.parseToAliases(text, EmojiParser.FitzpatrickAction.valueOf(fpAction.toUpperCase()));
+        } catch(IllegalArgumentException e) {
+            LOGGER.error("the UDF parameter (fpAction '"+fpAction+"') is invalid", e);
+            return null;
+        }
 
     }
 

@@ -1,0 +1,62 @@
+[
+  {
+    "text": null,
+    "specificEmojis": [],
+    "result": null
+  },
+  {
+    "text": "",
+    "specificEmojis": null,
+    "result": null
+  },
+  {
+    "text": null,
+    "specificEmojis": null,
+    "result": null
+  },
+  {
+    "text": "",
+    "specificEmojis": [],
+    "result": false
+  },
+  {
+    "text": "",
+    "specificEmojis": ["😱","🧐","😍"],
+    "result": false
+  },
+  {
+    "text": "some text without emojis",
+    "specificEmojis": [],
+    "result": false
+  },
+  {
+    "text": "some text without emojis",
+    "specificEmojis": ["😱","🧐","😍"],
+    "result": false
+  },
+  {
+    "text": "😎🤞some 🤓 text 😍 with 😍 emojis🚀🚀rocks!",
+    "specificEmojis": ["😍"],
+    "result": true
+  },
+  {
+    "text": "😎🤞some 🤓 text 😍 with 😍 emojis🚀🚀rocks!",
+    "specificEmojis": ["😎","🤞","🤓","😍","🚀"],
+    "result": true
+  },
+  {
+    "text": "😎🤞some 🤓 text 😍 with 😍 emojis🚀🚀rocks!",
+    "specificEmojis": [],
+    "result": false
+  },
+  {
+    "text": "🤓🤓🤓😍😍",
+    "specificEmojis": ["😱","🧐"],
+    "result": false
+  },
+  {
+    "text": "🤓🤓🤓😍😍",
+    "specificEmojis": [],
+    "result": false
+  }
+]

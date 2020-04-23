@@ -1,0 +1,22 @@
+[
+  {
+    "text": null,
+    "result": null
+  },
+  {
+    "text": "",
+    "result": ""
+  },
+  {
+    "text": "some text without emojis",
+    "result": "some text without emojis"
+  },
+  {
+    "text": "😎🤞some 🤓 text 😍 with 😍 emojis🚀🚀rocks!",
+    "result": "some  text  with  emojisrocks!"
+  },
+  {
+    "text": "🤓🤓🤓😍😍",
+    "result": ""
+  }
+]

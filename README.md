@@ -72,6 +72,36 @@ Variations  :
 	specificEmojis: a list of specific emojis to remove
 ```
 
+##### EMOJIS_TO_ALIASES
+
+```
+Overview    : leverages the emoji-java library to replace emojis contained in a string by their textual aliases
+Type        : SCALAR
+Variations  : 
+
+	Variation   : EMOJIS_TO_ALIASES(text VARCHAR, fpAction VARCHAR)
+	Returns     : VARCHAR
+	Description : replace emojis contained in a string by their textual aliases
+	text        : the given text in which to replace any(!) emojis by their textual aliases
+	fpAction    : how to deal with Fitzpatrick modifiers, must be either PARSE, REMOVE or IGNORE
+```
+
+##### EMOJIS_TO_HTMLCODEPOINTS
+
+```
+Version     : 1.0.0
+Overview    : leverages the emoji-java library to replace emojis contained in a string by their HTML codepoints
+Type        : SCALAR
+Variations  : 
+
+	Variation   : EMOJIS_TO_HTMLCODEPOINTS(text VARCHAR, fpAction VARCHAR, encoding VARCHAR)
+	Returns     : VARCHAR
+	Description : replace emojis contained in a string by their HTML codepoints
+	text        : the given text in which to replace any(!) emojis by their HTML codepoints
+	fpAction    : how to deal with Fitzpatrick modifiers, must be one of: PARSE, REMOVE, IGNORE
+	encoding    : which HTML codepoints representation to use, must be one of: HEX, DEC
+```
+
 ### Examples
 
 The UDF call examples below are based on the following pre-defined sample content:
@@ -147,21 +177,54 @@ ksql> SELECT id,content,EMOJIS_REMOVE(content) AS result FROM examples EMIT CHAN
 ^CQuery terminated
 ```
 
+##### EMOJIS_TO_ALIASES
+
+```
+ksql> SELECT id,content,EMOJIS_TO_ALIASES(content,'PARSE') AS result FROM examples EMIT CHANGES;
++--------------------------------------------------------+--------------------------------------------------------+--------------------------------------------------------+
+|ID                                                      |CONTENT                                                 |RESULT                                                  |
++--------------------------------------------------------+--------------------------------------------------------+--------------------------------------------------------+
+|1                                                       |null                                                    |null                                                    |
+|2                                                       |                                                        |                                                        |
+|3                                                       |This is text without any emojis.                        |This is text without any emojis.                        |
+|4                                                       |🤓🤓This 🤩 is text🌻🌺🍄🍄with🎸🚀emojis🚀🚀.👏      |:nerd::nerd:This :star_struck: is text:sunflower::hibisc|
+|                                                        |                                                        |us::mushroom::mushroom:with:guitar::rocket:emojis:rocket|
+|                                                        |                                                        |::rocket:.:clap:                                        |
+^CQuery terminated
+```
+
+##### EMOJIS_TO_HTMLCODEPOINTS
+
+```
++---------------------------------------------+-------------------------------------------------+---------------------------------------------+---------------------------------------------+
+|ID                                           |CONTENT                                          |RESULT1                                      |RESULT2                                      |
++---------------------------------------------+-------------------------------------------------+---------------------------------------------+---------------------------------------------+
+|1                                            |null                                             |null                                         |null                                         |
+|2                                            |                                                 |                                             |                                             |
+|3                                            |This is text without any emojis.                 |This is text without any emojis.             |This is text without any emojis.             |
+|4                                            |🤓🤓This 🤩 is text🌻🌺🍄🍄with🎸🚀emojis🚀🚀  |&#x1f913;&#x1f913;This &#x1f929; is text&#x1f|&#129299;&#129299;This &#129321; is text&#127|
+|                                             |.👏                                              |33b;&#x1f33a;&#x1f344;&#x1f344;with&#x1f3b8;&|803;&#127802;&#127812;&#127812;with&#127928;&|
+|                                             |                                                 |#x1f680;emojis&#x1f680;&#x1f680;.&#x1f44f;   |#128640;emojis&#128640;&#128640;.&#128079;   |
+^CQuery terminated
+```
+
 ### Installation / Deployment
 
-1. You can either build the Maven project from sources or download the latest snapshot release as self-contained jar from [here](https://drive.google.com/file/d/167vjGKp99cQfppfWh5YrrBziI2Kiua0l/view?usp=sharing).
-2. Move the `emoji-functions-1.0-SNAPSHOT.jar` file into a folder of your ksqlDB installation that is configured to load custom functions from during server bootstrap.
+1. You can either build the Maven project from sources or download the latest release as self-contained jar from [here](https://drive.google.com/file/d/1NkXitI9fer6OmqVsFZnMPhDGHNo2tsu9/view?usp=sharing).
+2. Move the `emoji-functions-1.0.jar` file into a folder of your ksqlDB installation that is configured to load custom functions from during server bootstrap.
 3. (Re)Start your ksqlDB server instance(s) to make it pick up and load the emoji functions.
 4. Verify if the deployment was successful by opening a ksqlDB CLI session and running `SHOW FUNCTIONS;` which should amongst all other available functions list the following **emoji-related UDFs**:
 
 ```
- Function Name         | Type      
+ Function Name            | Type      
 -----------------------------------
  ...
- EMOJIS_CONTAINED      | SCALAR    
- EMOJIS_COUNT          | SCALAR    
- EMOJIS_EXTRACT        | SCALAR    
- EMOJIS_REMOVE         | SCALAR    
+ EMOJIS_CONTAINED         | SCALAR    
+ EMOJIS_COUNT             | SCALAR    
+ EMOJIS_EXTRACT           | SCALAR    
+ EMOJIS_REMOVE            | SCALAR 
+ EMOJIS_TO_ALIASES        | SCALAR    
+ EMOJIS_TO_HTMLCODEPOINTS | SCALAR    
  ...
 -----------------------------------
 ```

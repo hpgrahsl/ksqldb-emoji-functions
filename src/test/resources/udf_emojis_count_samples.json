@@ -1,0 +1,52 @@
+[
+  {
+    "text": null,
+    "unique": false,
+    "result": null
+  },
+  {
+    "text": null,
+    "unique": true,
+    "result": null
+  },
+  {
+    "text": "",
+    "unique": false,
+    "result": 0
+  },
+  {
+    "text": "",
+    "unique": true,
+    "result": 0
+  },
+  {
+    "text": "some text without emojis",
+    "unique": false,
+    "result": 0
+  },
+  {
+    "text": "some text without emojis",
+    "unique": true,
+    "result": 0
+  },
+  {
+    "text": "😎🤞some 🤓 text 😍 with 😍 emojis🚀🚀rocks!",
+    "unique": false,
+    "result": 7
+  },
+  {
+    "text": "😎🤞some 🤓 text 😍 with 😍 emojis🚀🚀rocks!",
+    "unique": true,
+    "result": 5
+  },
+  {
+    "text": "🤓🤓🤓😍😍",
+    "unique": false,
+    "result": 5
+  },
+  {
+    "text": "🤓🤓🤓😍😍",
+    "unique": true,
+    "result": 2
+  }
+]
