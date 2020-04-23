@@ -202,9 +202,9 @@ ksql> SELECT id,content,EMOJIS_TO_ALIASES(content,'PARSE') AS result FROM exampl
 |1                                            |null                                             |null                                         |null                                         |
 |2                                            |                                                 |                                             |                                             |
 |3                                            |This is text without any emojis.                 |This is text without any emojis.             |This is text without any emojis.             |
-|4                                            |🤓🤓This 🤩 is text🌻🌺🍄🍄with🎸🚀emojis🚀🚀|&#x1f913;&#x1f913;This &#x1f929; is text&#x1f|&#129299;&#129299;This &#129321; is text&#127|
+|4                                            |🤓🤓This 🤩 is text🌻🌺🍄🍄with🎸🚀emojis🚀🚀  |&#x1f913;&#x1f913;This &#x1f929; is text&#x1f|&#129299;&#129299;This &#129321; is text&#127|
 |                                             |.👏                                              |33b;&#x1f33a;&#x1f344;&#x1f344;with&#x1f3b8;&|803;&#127802;&#127812;&#127812;with&#127928;&|
-|                                             |                                                  |#x1f680;emojis&#x1f680;&#x1f680;.&#x1f44f;   |#128640;emojis&#128640;&#128640;.&#128079;   |
+|                                             |                                                 |#x1f680;emojis&#x1f680;&#x1f680;.&#x1f44f;   |#128640;emojis&#128640;&#128640;.&#128079;   |
 ^CQuery terminated
 ```
 
