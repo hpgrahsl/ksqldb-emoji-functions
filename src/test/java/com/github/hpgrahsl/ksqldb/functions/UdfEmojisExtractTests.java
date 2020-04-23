@@ -17,42 +17,20 @@
 package com.github.hpgrahsl.ksqldb.functions;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.DynamicTest;
-import org.junit.jupiter.api.TestFactory;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.DynamicTest.dynamicTest;
+import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 
 public class UdfEmojisExtractTests {
 
-  @TestFactory
   @DisplayName("applying UDF...")
-  Stream<DynamicTest> extractEmojis() {
-
-    var udf = new UdfEmojisExtract();
-
-    var testData = Map.of(
-            Map.entry("",false), Collections.emptyList(),
-            Map.entry("",true), Collections.emptyList(),
-            Map.entry("some text without emojis",false), Collections.emptyList(),
-            Map.entry("some text without emojis",true), Collections.emptyList(),
-            Map.entry("😎🤞some 🤓 text 😍 with 😍 emojis🚀🚀rocks!",false), List.of("😎","🤞","🤓","😍","😍","🚀","🚀"),
-            Map.entry("😎🤞some 🤓 text 😍 with 😍 emojis🚀🚀rocks!",true), List.of("😎","🤞","🤓","😍","🚀"),
-            Map.entry("🤓🤓🤓😍😍",false), List.of("🤓","🤓","🤓","😍","😍"),
-            Map.entry("🤓🤓🤓😍😍",true), List.of("🤓","😍")
-    );
-
-    return testData.entrySet().stream().map(es -> dynamicTest(
-            "emojis_extract(\""+es.getKey().getKey()+"\","+es.getKey().getValue()+") = "+es.getValue(),
-            () -> assertEquals(es.getValue(),udf.extractEmojis(es.getKey().getKey(),es.getKey().getValue()),
-                          "unexpected mismatch of extracted emojis")
-    ));
-
+  @ParameterizedTest(name = "emojis_extract({0},{1}) = {2}")
+  @MethodSource("com.github.hpgrahsl.ksqldb.functions.util.JsonFileArgumentsProviders#emojisExtractSamples")
+  void applyUdfEmojisExtract(String text, boolean unique, List<String> result) {
+    assertIterableEquals(result,new UdfEmojisExtract().extractEmojis(text,unique));
   }
 
 }
