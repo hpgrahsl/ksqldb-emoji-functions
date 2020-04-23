@@ -34,6 +34,7 @@
         <emoji-java.version>5.1.1</emoji-java.version>
         <junit.jupiter.version>5.6.1</junit.jupiter.version>
         <maven.shade.version>3.2.1</maven.shade.version>
+        <javax.json.version>1.1.4</javax.json.version>
         <!-- JUnit 5 requires Surefire version 2.22.1 or higher -->
         <maven.surefire.version>2.22.1</maven.surefire.version>
     </properties>
@@ -85,6 +86,15 @@
                         <goals>
                             <goal>shade</goal>
                         </goals>
+                        <configuration>
+                            <artifactSet>
+                                <excludes>
+                                    <exclude>org.slf4j:slf4j-api:jar:</exclude>
+                                    <exclude> org.slf4j:slf4j-log4j12:jar:</exclude>
+                                    <exclude>log4j:log4j:jar:</exclude>
+                                </excludes>
+                            </artifactSet>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
@@ -113,6 +123,12 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
             <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.json</artifactId>
+            <version>${javax.json.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
