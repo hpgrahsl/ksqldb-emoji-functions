@@ -1,0 +1,254 @@
+[
+  {
+    "text": null,
+    "fpAction": "PARSE",
+    "encoding": "HEX",
+    "result": null
+  },
+  {
+    "text": null,
+    "fpAction": "REMOVE",
+    "encoding": "HEX",
+    "result": null
+  },
+  {
+    "text": null,
+    "fpAction": "IGNORE",
+    "encoding": "HEX",
+    "result": null
+  },
+  {
+    "text": null,
+    "fpAction": "PARSE",
+    "encoding": "DEC",
+    "result": null
+  },
+  {
+    "text": null,
+    "fpAction": "REMOVE",
+    "encoding": "DEC",
+    "result": null
+  },
+  {
+    "text": null,
+    "fpAction": "IGNORE",
+    "encoding": "DEC",
+    "result": null
+  },
+  {
+    "text": "",
+    "fpAction": null,
+    "encoding": "HEX",
+    "result": null
+  },
+  {
+    "text": "",
+    "fpAction": null,
+    "encoding": "HEX",
+    "result": null
+  },
+  {
+    "text": "",
+    "fpAction": null,
+    "encoding": "HEX",
+    "result": null
+  },
+  {
+  "text": "",
+  "fpAction": null,
+  "encoding": "DEC",
+  "result": null
+  },
+  {
+    "text": "",
+    "fpAction": null,
+    "encoding": "DEC",
+    "result": null
+  },
+  {
+    "text": "",
+    "fpAction": null,
+    "encoding": "DEC",
+    "result": null
+  },
+  {
+    "text": null,
+    "fpAction": null,
+    "encoding": "HEX",
+    "result": null
+  },
+  {
+    "text": null,
+    "fpAction": null,
+    "encoding": "HEX",
+    "result": null
+  },
+  {
+    "text": null,
+    "fpAction": null,
+    "encoding": "HEX",
+    "result": null
+  },
+  {
+    "text": null,
+    "fpAction": null,
+    "encoding": "DEC",
+    "result": null
+  },
+  {
+    "text": null,
+    "fpAction": null,
+    "encoding": "DEC",
+    "result": null
+  },
+  {
+    "text": null,
+    "fpAction": null,
+    "encoding": "DEC",
+    "result": null
+  },
+  {
+    "text": "some text without emojis",
+    "fpAction": "PARSE",
+    "encoding": "HEX",
+    "result": "some text without emojis"
+  },
+  {
+    "text": "some text without emojis",
+    "fpAction": "REMOVE",
+    "encoding": "HEX",
+    "result": "some text without emojis"
+  },
+  {
+    "text": "some text without emojis",
+    "fpAction": "IGNORE",
+    "encoding": "HEX",
+    "result": "some text without emojis"
+  },
+  {
+    "text": "some text without emojis",
+    "fpAction": "PARSE",
+    "encoding": "DEC",
+    "result": "some text without emojis"
+  },
+  {
+    "text": "some text without emojis",
+    "fpAction": "REMOVE",
+    "encoding": "DEC",
+    "result": "some text without emojis"
+  },
+  {
+    "text": "some text without emojis",
+    "fpAction": "IGNORE",
+    "encoding": "DEC",
+    "result": "some text without emojis"
+  },
+  {
+    "text": "😎🤞some 🤓 text 😍 with 😍 emojis🚀🚀rocks!",
+    "fpAction": "PARSE",
+    "encoding": "HEX",
+    "result": "&#x1f60e;&#x1f91e;some &#x1f913; text &#x1f60d; with &#x1f60d; emojis&#x1f680;&#x1f680;rocks!"
+  },
+  {
+    "text": "😎🤞some 🤓 text 😍 with 😍 emojis🚀🚀rocks!",
+    "fpAction": "REMOVE",
+    "encoding": "HEX",
+    "result": "&#x1f60e;&#x1f91e;some &#x1f913; text &#x1f60d; with &#x1f60d; emojis&#x1f680;&#x1f680;rocks!"
+  },
+  {
+    "text": "😎🤞some 🤓 text 😍 with 😍 emojis🚀🚀rocks!",
+    "fpAction": "IGNORE",
+    "encoding": "HEX",
+    "result": "&#x1f60e;&#x1f91e;some &#x1f913; text &#x1f60d; with &#x1f60d; emojis&#x1f680;&#x1f680;rocks!"
+  },
+  {
+    "text": "😎🤞some 🤓 text 😍 with 😍 emojis🚀🚀rocks!",
+    "fpAction": "PARSE",
+    "encoding": "DEC",
+    "result": "&#128526;&#129310;some &#129299; text &#128525; with &#128525; emojis&#128640;&#128640;rocks!"
+  },
+  {
+    "text": "😎🤞some 🤓 text 😍 with 😍 emojis🚀🚀rocks!",
+    "fpAction": "REMOVE",
+    "encoding": "DEC",
+    "result": "&#128526;&#129310;some &#129299; text &#128525; with &#128525; emojis&#128640;&#128640;rocks!"
+  },
+  {
+    "text": "😎🤞some 🤓 text 😍 with 😍 emojis🚀🚀rocks!",
+    "fpAction": "IGNORE",
+    "encoding": "DEC",
+    "result": "&#128526;&#129310;some &#129299; text &#128525; with &#128525; emojis&#128640;&#128640;rocks!"
+  },
+  {
+    "text": "🤓🤓🤓😍😍",
+    "fpAction": "PARSE",
+    "encoding": "HEX",
+    "result": "&#x1f913;&#x1f913;&#x1f913;&#x1f60d;&#x1f60d;"
+  },
+  {
+    "text": "🤓🤓🤓😍😍",
+    "fpAction":  "REMOVE",
+    "encoding": "HEX",
+    "result": "&#x1f913;&#x1f913;&#x1f913;&#x1f60d;&#x1f60d;"
+  },
+  {
+    "text": "🤓🤓🤓😍😍",
+    "fpAction":  "IGNORE",
+    "encoding": "HEX",
+    "result": "&#x1f913;&#x1f913;&#x1f913;&#x1f60d;&#x1f60d;"
+  },
+  {
+    "text": "🤓🤓🤓😍😍",
+    "fpAction": "PARSE",
+    "encoding": "DEC",
+    "result": "&#129299;&#129299;&#129299;&#128525;&#128525;"
+  },
+  {
+    "text": "🤓🤓🤓😍😍",
+    "fpAction":  "REMOVE",
+    "encoding": "DEC",
+    "result": "&#129299;&#129299;&#129299;&#128525;&#128525;"
+  },
+  {
+    "text": "🤓🤓🤓😍😍",
+    "fpAction":  "IGNORE",
+    "encoding": "DEC",
+    "result": "&#129299;&#129299;&#129299;&#128525;&#128525;"
+  },
+  {
+    "text": "👋🏻 some different 👱🏿 versions of 🧒🏽 emojis with fitzpatrick 👩🏾 modifiers applied 👌🏻",
+    "fpAction": "PARSE",
+    "encoding": "HEX",
+    "result": "&#x1f44b; some different &#x1f471; versions of &#x1f9d2; emojis with fitzpatrick &#x1f469; modifiers applied &#x1f44c;"
+  },
+  {
+    "text": "👋🏻 some different 👱🏿 versions of 🧒🏽 emojis with fitzpatrick 👩🏾 modifiers applied 👌🏻",
+    "fpAction":  "REMOVE",
+    "encoding": "HEX",
+    "result": "&#x1f44b; some different &#x1f471; versions of &#x1f9d2; emojis with fitzpatrick &#x1f469; modifiers applied &#x1f44c;"
+  },
+  {
+    "text": "👋🏻 some different 👱🏿 versions of 🧒🏽 emojis with fitzpatrick 👩🏾 modifiers applied 👌🏻",
+    "fpAction":  "IGNORE",
+    "encoding": "HEX",
+    "result": "&#x1f44b;🏻 some different &#x1f471;🏿 versions of &#x1f9d2;🏽 emojis with fitzpatrick &#x1f469;🏾 modifiers applied &#x1f44c;🏻"
+  },
+  {
+    "text": "👋🏻 some different 👱🏿 versions of 🧒🏽 emojis with fitzpatrick 👩🏾 modifiers applied 👌🏻",
+    "fpAction": "PARSE",
+    "encoding": "DEC",
+    "result": "&#128075; some different &#128113; versions of &#129490; emojis with fitzpatrick &#128105; modifiers applied &#128076;"
+  },
+  {
+    "text": "👋🏻 some different 👱🏿 versions of 🧒🏽 emojis with fitzpatrick 👩🏾 modifiers applied 👌🏻",
+    "fpAction":  "REMOVE",
+    "encoding": "DEC",
+    "result": "&#128075; some different &#128113; versions of &#129490; emojis with fitzpatrick &#128105; modifiers applied &#128076;"
+  },
+  {
+    "text": "👋🏻 some different 👱🏿 versions of 🧒🏽 emojis with fitzpatrick 👩🏾 modifiers applied 👌🏻",
+    "fpAction":  "IGNORE",
+    "encoding": "DEC",
+    "result": "&#128075;🏻 some different &#128113;🏿 versions of &#129490;🏽 emojis with fitzpatrick &#128105;🏾 modifiers applied &#128076;🏻"
+  }
+]

@@ -1,0 +1,107 @@
+[
+  {
+    "text": null,
+    "fpAction": "PARSE",
+    "result": null
+  },
+  {
+    "text": null,
+    "fpAction": "REMOVE",
+    "result": null
+  },
+  {
+    "text": null,
+    "fpAction": "IGNORE",
+    "result": null
+  },
+  {
+    "text": "",
+    "fpAction": null,
+    "result": null
+  },
+  {
+    "text": "",
+    "fpAction": null,
+    "result": null
+  },
+  {
+    "text": "",
+    "fpAction": null,
+    "result": null
+  },
+  {
+    "text": null,
+    "fpAction": null,
+    "result": null
+  },
+  {
+    "text": null,
+    "fpAction": null,
+    "result": null
+  },
+  {
+    "text": null,
+    "fpAction": null,
+    "result": null
+  },
+  {
+    "text": "some text without emojis",
+    "fpAction": "PARSE",
+    "result": "some text without emojis"
+  },
+  {
+    "text": "some text without emojis",
+    "fpAction": "REMOVE",
+    "result": "some text without emojis"
+  },
+  {
+    "text": "some text without emojis",
+    "fpAction": "IGNORE",
+    "result": "some text without emojis"
+  },
+  {
+  "text": "😎🤞some 🤓 text 😍 with 😍 emojis🚀🚀rocks!",
+  "fpAction": "PARSE",
+  "result": ":sunglasses::hand_with_index_and_middle_fingers_crossed:some :nerd: text :heart_eyes: with :heart_eyes: emojis:rocket::rocket:rocks!"
+  },
+  {
+    "text": "😎🤞some 🤓 text 😍 with 😍 emojis🚀🚀rocks!",
+    "fpAction": "REMOVE",
+    "result": ":sunglasses::hand_with_index_and_middle_fingers_crossed:some :nerd: text :heart_eyes: with :heart_eyes: emojis:rocket::rocket:rocks!"
+  },
+  {
+    "text": "😎🤞some 🤓 text 😍 with 😍 emojis🚀🚀rocks!",
+    "fpAction": "IGNORE",
+    "result": ":sunglasses::hand_with_index_and_middle_fingers_crossed:some :nerd: text :heart_eyes: with :heart_eyes: emojis:rocket::rocket:rocks!"
+  },
+  {
+    "text": "🤓🤓🤓😍😍",
+    "fpAction": "PARSE",
+    "result": ":nerd::nerd::nerd::heart_eyes::heart_eyes:"
+  },
+  {
+    "text": "🤓🤓🤓😍😍",
+    "fpAction":  "REMOVE",
+    "result": ":nerd::nerd::nerd::heart_eyes::heart_eyes:"
+  },
+  {
+    "text": "🤓🤓🤓😍😍",
+    "fpAction":  "IGNORE",
+    "result": ":nerd::nerd::nerd::heart_eyes::heart_eyes:"
+  },
+  {
+    "text": "👋🏻 some different 👱🏿 versions of 🧒🏽 emojis with fitzpatrick 👩🏾 modifiers applied 👌🏻",
+    "fpAction": "PARSE",
+    "result": ":wave|type_1_2: some different :person_with_blond_hair|type_6: versions of :child|type_4: emojis with fitzpatrick :woman|type_5: modifiers applied :ok_hand|type_1_2:"
+  },
+  {
+    "text": "👋🏻 some different 👱🏿 versions of 🧒🏽 emojis with fitzpatrick 👩🏾 modifiers applied 👌🏻",
+    "fpAction":  "REMOVE",
+    "result": ":wave: some different :person_with_blond_hair: versions of :child: emojis with fitzpatrick :woman: modifiers applied :ok_hand:"
+  },
+  {
+    "text": "👋🏻 some different 👱🏿 versions of 🧒🏽 emojis with fitzpatrick 👩🏾 modifiers applied 👌🏻",
+    "fpAction":  "IGNORE",
+    "result": ":wave:🏻 some different :person_with_blond_hair:🏿 versions of :child:🏽 emojis with fitzpatrick :woman:🏾 modifiers applied :ok_hand:🏻"
+  }
+]
