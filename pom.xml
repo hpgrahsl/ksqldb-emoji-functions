@@ -23,7 +23,7 @@
 
     <groupId>com.github.hpgrahsl.ksqldb.functions</groupId>
     <artifactId>emoji-functions</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>jar</packaging>
 
     <name>Utility functions for handling emojis within ksqlDB</name>
