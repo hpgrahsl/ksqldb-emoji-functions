@@ -20,6 +20,8 @@ import com.vdurmont.emoji.EmojiParser;
 import io.confluent.ksql.function.udf.Udf;
 import io.confluent.ksql.function.udf.UdfDescription;
 import io.confluent.ksql.function.udf.UdfParameter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.HashSet;
 
@@ -31,6 +33,8 @@ import java.util.HashSet;
 )
 public class UdfEmojisCount {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(UdfEmojisCount.class);
+
     @Udf(description = "counts the number of potentially contained emojis with or without duplicates from the given string")
     public Integer countEmojis(
             @UdfParameter(value = "text", description = "the given text in which to count emojis")
@@ -38,8 +42,10 @@ public class UdfEmojisCount {
             @UdfParameter(value = "unique", description = "if true will return count of unique emojis, if false counts all emojis i.e. also duplicates")
             final boolean unique) {
 
-        if(text == null)
+        if(text == null) {
+            LOGGER.warn("the UDF parameter ('text') was null which is probably not intended");
             return null;
+        }
 
         return !unique
                 ? EmojiParser.extractEmojis(text).size()

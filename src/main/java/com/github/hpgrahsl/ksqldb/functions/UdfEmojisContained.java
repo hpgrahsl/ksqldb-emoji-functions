@@ -21,6 +21,8 @@ import com.vdurmont.emoji.EmojiParser;
 import io.confluent.ksql.function.udf.Udf;
 import io.confluent.ksql.function.udf.UdfDescription;
 import io.confluent.ksql.function.udf.UdfParameter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.HashSet;
 import java.util.List;
@@ -33,12 +35,18 @@ import java.util.List;
 )
 public class UdfEmojisContained {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(UdfEmojisContained.class);
+
     @Udf(description = "checks whether or not the given string contains emojis")
     public Boolean containsEmojis(
             @UdfParameter(value = "text", description = "the given text in which to check for any(!) emoji occurrences")
             final String text) {
 
-        return text == null ? null : EmojiManager.containsEmoji(text);
+        if(text == null) {
+            LOGGER.warn("the UDF parameter ('text') was null which is probably not intended");
+            return null;
+        }
+        return EmojiManager.containsEmoji(text);
 
     }
 
@@ -49,8 +57,10 @@ public class UdfEmojisContained {
             @UdfParameter(value = "specificEmojis", description = "a list of specific emojis to look for")
             final List<String> specificEmojis) {
 
-        if(text == null)
+        if(text == null || specificEmojis == null) {
+            LOGGER.warn("any of the UDF parameters ('text','specificEmojis') was null which is probably not intended");
             return null;
+        }
 
         var containedEmojis = new HashSet<>(EmojiParser.extractEmojis(text));
         containedEmojis.retainAll(new HashSet<>(specificEmojis));

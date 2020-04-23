@@ -20,6 +20,8 @@ import com.vdurmont.emoji.EmojiParser;
 import io.confluent.ksql.function.udf.Udf;
 import io.confluent.ksql.function.udf.UdfDescription;
 import io.confluent.ksql.function.udf.UdfParameter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
@@ -33,6 +35,8 @@ import java.util.List;
 )
 public class UdfEmojisExtract {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(UdfEmojisExtract.class);
+
     @Udf(description = "extracts a list of potentially contained emojis with or without duplicates from the given string")
     public List<String> extractEmojis(
             @UdfParameter(value = "text", description = "the given text to extract emojis from")
@@ -40,8 +44,10 @@ public class UdfEmojisExtract {
             @UdfParameter(value = "unique", description = "if true will return only unique emojis (set semantic), if false every emoji i.e. also duplicate ones (list semantic) will be returned")
             final boolean unique) {
 
-        if(text == null)
+        if(text == null) {
+            LOGGER.warn("the UDF parameter ('text') was null which is probably not intended");
             return null;
+        }
 
         return !unique
                 ? EmojiParser.extractEmojis(text)
